@@ -67,6 +67,19 @@ class Builder extends \Illuminate\Database\Schema\Builder
     }
 
     /**
+     * Drop a collection from the schema, if present.
+     *
+     * @param  string  $collection
+     * @return void
+     */
+    public function dropIfExists($collection)
+    {
+         if ($this->hasTable($collection)) {
+              $this->drop($collection);
+         }
+    }
+
+    /**
      * Modify a table on the schema.
      *
      * @param string  $table
