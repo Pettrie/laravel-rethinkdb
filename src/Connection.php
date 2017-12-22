@@ -25,11 +25,14 @@ class Connection extends \Illuminate\Database\Connection
         $this->config = $config;
         $this->database = $config['database'];
 
-        $port = isset($config['port']) ? $config['port'] : 28015;
-        $authKey = isset($config['authKey']) ? $config['authKey'] : null;
+        //$port = isset($config['port']) ? $config['port'] : 28015;
+        //$authKey = isset($config['authKey']) ? $config['authKey'] : null;
 
         // Create the connection
-        $this->connection = r\connect($config['host'], $port, $this->database, $authKey);
+        //$this->connection = r\connect($config['host'], $port, $this->database, $authKey);
+
+        // create connection and pass all parameters
+        $this->connection = r\connect($config);
 
         // We need to initialize a query grammar and the query post processors,
         // which are both very important parts of the database abstractions -
